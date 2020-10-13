@@ -1,17 +1,5 @@
 <template>
-
-
-        <template if:true={contacts}>
-                <template for:each={contacts} for:item="contact">
-                    <p key={contact.Id}>{contact.Name}</p>
-                </template>
-            </template>
-
-
-        <!-- <template if:true={record.data}>
-            <p>{name}</p>
-            <p>{industry}</p>
-            <p>{rating}</p>
-        </template> -->
-
+    <template if:true={accounts}>
+        {name} {industry} {rating}
+    </template>
 </template>

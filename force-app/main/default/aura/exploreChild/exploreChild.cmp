@@ -1,3 +1,0 @@
-<aura:component >
-	<aura:attribute name="message" type="String" default="Hello"/>
-</aura:component>

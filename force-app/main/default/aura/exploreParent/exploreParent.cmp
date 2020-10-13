@@ -1,3 +1,0 @@
-<aura:component implements="force:appHostable" >
-    <c:exploreChild message="HEY!! Salesforce Casts"/>
-</aura:component>

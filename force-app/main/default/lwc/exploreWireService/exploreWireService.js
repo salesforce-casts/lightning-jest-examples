@@ -1,45 +1,38 @@
 import { LightningElement, api, wire, track } from 'lwc';
 
+import ACCOUNT_NAME_FIELD from '@salesforce/schema/Account.Name';
+import INDUSTRY_FIELD from '@salesforce/schema/Account.Industry';
+import RATING_FIELD from '@salesforce/schema/Account.Rating';
+
 import { getRecord } from 'lightning/uiRecordApi';
 
-const FIELDS = [
-    'Account.Name',
-    'Account.Industry',
-    'Account.Rating'
-]
+const FIELDS = [ACCOUNT_NAME_FIELD, INDUSTRY_FIELD, RATING_FIELD];
 
 export default class ExploreWireService extends LightningElement {
-
     @api recordId;
-    @track contacts;
+    @track accounts;
     @track error;
 
-    @wire(getRecord, {recordId: '$recordId', fields: FIELDS }) 
-    wiredContacts({ error, data }) {
+    @wire(getRecord, { recordId: '$recordId', fields: FIELDS })
+    wiredsAccounts({ error, data }) {
         if (data) {
-            this.contacts = data;
+            this.accounts = data;
             this.error = undefined;
         } else if (error) {
             this.error = error;
-            this.contacts = undefined;
+            this.accounts = undefined;
         }
     }
 
-    /** 
-     
-     get name(){
-         return this.record.data.fields.Name.value;
-        }
-        
-        get industry(){
-        return this.record.data.fields.Industry.value;
+    get name() {
+        return this.accounts.fields.Name.value;
     }
-    
-    get rating(){
-        return this.record.data.fields.Rating.value;
-    }
-    
-    */
-    
 
+    get industry() {
+        return this.accounts.fields.Industry.value;
+    }
+
+    get rating() {
+        return this.accounts.fields.Rating.value;
+    }
 }
